@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <h1>WebSocket Example</h1>
+
+    <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Entrez un message">
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <div id="messages"></div>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:5500');
+
+        socket.onopen = function() {
+            console.log('Connexion WebSocket établie.');
+
+            // Exemple d'envoi de message au serveur
+            socket.send('Hello Server!');
+        };
+
+        socket.onmessage = function(event) {
+            console.log('Message reçu du serveur : ', event.data);
+
+            // Affichage des messages reçus dans la page HTML
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<p>Message du serveur : ${event.data}</p>`;
+        };
+
+        socket.onclose = function(event) {
+            console.log('Connexion WebSocket fermée.');
+        };
+
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const messageInput = document.getElementById('messageInput').value;
+            socket.send(messageInput);
+        });
+    </script>
+</body>
+</html>
