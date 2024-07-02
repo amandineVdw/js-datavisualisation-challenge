@@ -6,6 +6,7 @@ window.onload = function () {
   remoteCanvas.id = "remoteChart";
   remoteCanvas.style.width = "100%";
   remoteCanvas.style.maxWidth = "80rem";
+  remoteCanvas.role = "img";
 
   remoteContainer.appendChild(remoteCanvas);
 
@@ -19,7 +20,7 @@ window.onload = function () {
 
   const remoteCtx = remoteCanvas.getContext("2d");
 
-  new Chart(remoteCtx, {
+  const remoteChart = new Chart(remoteCtx, {
     type: "bar",
     data: {
       labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -50,43 +51,72 @@ window.onload = function () {
   offencePoliceCanvas.id = "offencePoliceChart";
   offencePoliceCanvas.style.width = "100%";
   offencePoliceCanvas.style.maxWidth = "80rem";
+  offencePoliceCanvas.role = "img";
 
   //Ajouter le canvas/chart dans la div/container
   offencePoliceContainer.appendChild(offencePoliceCanvas);
 
   //Inserer la div/chart au bon endroit dans l'article (en dessous de bodyContent=id)
   const offencePoliceElement = document.getElementById("bodyContent");
-  if (offencePoliceElement) {
-    const titleElement = document.getElementById(
-      "Crimes_et_d.C3.A9lits_enregistr.C3.A9s_par_les_services_de_police"
-    );
-    titleElement.insertAdjacentElement("afterend", offencePoliceContainer);
-  } else {
-    console.error("Element with id 'bodyContent' not found.");
+if (offencePoliceElement) {
+  const titleElement = document.getElementById(
+    "Crimes_et_d.C3.A9lits_enregistr.C3.A9s_par_les_services_de_police"
+  );
+  titleElement.insertAdjacentElement("afterend", offencePoliceContainer);
+} else {
+  console.error("Element with id 'bodyContent' not found.");
+}
+
+
+
+  const table = document.getElementById("table2");
+  if (!table) {
+    console.error('Table with id "table2" not found.');
+  }
+  const rows = table
+    .getElemementsByTagName("tbody")[0]
+    .getElemementsByTagName("tr");
+
+  const countries = [];
+  const data = [];
+  const labels = Array.from(
+    table.getElementsByTagName("thead")[0].getElementsByTagName("th")
+  )
+    .slice(2)
+    .map((th) => th.innerText);
+
+  for (let row of rows) {
+    const cells = row.getElementsByTagName("td");
+    const contry = cells[0].innerText;
+    countries.push(country);
+
+    const rowData = [];
+    for (let i = 1; i < cells.length; i++) {
+      rowData.push(parseFloat(cells[i].innerText.replace(",", ".")));
+    }
+    data.push(rowData);
   }
 
   const offencePoliceCtx = offencePoliceCanvas.getContext("2d");
-  const xValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
-  const yValues = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
-
-  new Chart(offencePoliceCtx, {
-    type: "line",
-    data: {
-      labels: xValues,
-      datasets: [
-        {
-          fill: false,
-          lineTension: 0,
-          backgroundColor: "rgba(0,0,255,1.0)",
-          borderColor: "rgba(0,0,255,0.1)",
-          data: yValues,
-        },
-      ],
-    },
+  const chartData = {
+    labels: labels,
+    datasets: countries.map((country, index) => ({
+      label: country,
+      data: data[index],
+      fill: false,
+      borderColor: "rgba(75, 192, 192, 1)",
+      tension: 0.1,
+    })),
+  };
+  const myChart = new Chart(ctx, {
+    type: "bar",
+    data: chartData,
     options: {
-      legend: { display: false },
+      responsive: true,
       scales: {
-        yAxes: [{ ticks: { min: 6, max: 16 } }],
+        y: {
+          beginAtZero: true,
+        },
       },
     },
   });
@@ -99,6 +129,7 @@ window.onload = function () {
   homicidePoliceCanvas.id = "homicidePoliceChart";
   homicidePoliceCanvas.style.width = "100%";
   homicidePoliceCanvas.style.maxWidth = "80rem";
+  homicidePoliceCanvas.role = "img";
 
   homicidePoliceContainer.appendChild(homicidePoliceCanvas);
 
