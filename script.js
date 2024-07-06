@@ -14,13 +14,6 @@ offencePoliceContainer.appendChild(offencePoliceCanvas);
 const dataSetSelect = document.createElement("select");
 dataSetSelect.id = "dataSetSelect";
 
-// Ajouter des options pour les années de 2012 à 2002
-for (let year = 2012; year >= 2002; year--) {
-  const option = document.createElement("option");
-  option.value = year;
-  option.text = `Data for the year ${year}`;
-  dataSetSelect.appendChild(option);
-}
 // Ajouter le menu déroulant dans la div/container
 offencePoliceContainer.appendChild(dataSetSelect);
 
@@ -43,13 +36,21 @@ document.addEventListener("DOMContentLoaded", function () {
   let table1 = document.getElementById("table1");
 
   // Sélectionner les années à partir de la première ligne du tableau (les en-têtes de colonne, sauf le premier)
-  let dataYear = Array.from(
+  let dataYears = Array.from(
     table1.querySelectorAll("tbody > tr:first-child > th:not(:first-child)")
   )
     .slice(1)
     .map((th) => th.innerText.trim());
 
-  console.log(dataYear);
+  console.log(dataYears);
+
+  // Remplir le menu déroulant avec les années
+  dataYears.forEach((year) => {
+    const option = document.createElement("option");
+    option.value = year;
+    option.text = year;
+    dataSetSelect.appendChild(option);
+  });
 
   // Sélectionner toutes les lignes du tableau sauf la première (en-têtes)
   let mixedData = [];
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       Array.from(row.cells)
         .slice(2)
         .forEach((cell, index) => {
-          let year = dataYear[index];
+          let year = dataYears[index];
           mixedData.push({
             year: year,
             country: countryName,
@@ -69,44 +70,61 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   );
 
+  // Console log pour vérifier les données
   console.log(mixedData);
 
-  // Fonction pour créer les labels et datasets pour une année donnée
-  function createLabelsAndDatasets(year) {
-    const filteredData = mixedData.filter((item) => item.year === year);
-    const labels = filteredData.map((item) => item.country);
-    const crimeIndexes = filteredData.map((item) => item.data);
+  // Fonction pour créer les labels et datasets pour l'année sélectionnée
+  function createLabelsAndDatasets(selectedYear) {
+    // Obtenir la liste des pays uniques
+    const countries = Array.from(
+      new Set(mixedData.map((item) => item.country))
+    );
+
+    // Filtrer les données pour l'année sélectionnée
+    const filteredData = mixedData.filter((item) => item.year === selectedYear);
+
+    // Créer les datasets pour le graphique
+    const datasets = [
+      {
+        label: `Crime Index (${selectedYear})`,
+        data: countries.map((country) => {
+          const dataForCountry = filteredData.find(
+            (item) => item.country === country
+          );
+          return dataForCountry ? dataForCountry.data : null;
+        }),
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(75, 192, 192, 1)",
+        borderWidth: 1,
+      },
+    ];
 
     return {
-      labels: labels,
-      datasets: [
-        {
-          label: `Crime Index (${year})`,
-          data: crimeIndexes,
-          backgroundColor: "rgba(75, 192, 192, 0.2)",
-          borderColor: "rgba(75, 192, 192, 1)",
-          borderWidth: 1,
-          yAxisID: "y",
-        },
-      ],
+      labels: countries,
+      datasets: datasets,
     };
   }
 
-  // Initialiser le graphique avec l'année la plus récente (par exemple, 2012)
-  const initialYear = "2012";
+  // Initialiser le graphique avec la première année sélectionnée
+  const initialYear = dataSetSelect.value || dataYears[0];
   const initialData = createLabelsAndDatasets(initialYear);
 
   // Configuration du graphique
   const config = {
     type: "bar",
-    data: {
-      labels: initialData.labels,
-      datasets: initialData.datasets,
-    },
+    data: initialData,
     options: {
       responsive: true,
       scales: {
+        x: {
+          stacked: true,
+          title: {
+            display: true,
+            text: "Country",
+          },
+        },
         y: {
+          stacked: false,
           type: "linear",
           display: true,
           position: "left",
@@ -120,21 +138,27 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Création du graphique
-  const myChart = new Chart(offencePoliceCtx, config);
+  let myChart = new Chart(offencePoliceCtx, config);
 
   // Fonction pour mettre à jour le graphique
-  function updateChart(year) {
-    const newData = createLabelsAndDatasets(year);
+  function updateChart(selectedYear) {
+    const newData = createLabelsAndDatasets(selectedYear);
     myChart.data.labels = newData.labels;
     myChart.data.datasets = newData.datasets;
     myChart.update();
   }
 
-  // Ajouter un écouteur d'événements pour le menu déroulant
-  document
-    .getElementById("dataSetSelect")
-    .addEventListener("change", function (event) {
-      const selectedYear = event.target.value;
-      updateChart(selectedYear);
-    });
+  // Ajouter un écouteur d'événement pour le menu déroulant
+  dataSetSelect.addEventListener("change", function (event) {
+    const selectedYear = event.target.value;
+    updateChart(selectedYear);
+  });
+
+  // Initialiser le menu déroulant avec la première année
+  dataSetSelect.value = initialYear;
+  updateChart(initialYear);
+
+  const myObj = JSON.stringify(mixedData);
+  console.log(myObj);
+  localStorage.setItem("testJson", myObj);
 });
