@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     data: initialData,
     options: {
       responsive: true,
+      maintainAspectRatio: false, // Permet de ne pas maintenir le ratio d'aspect pour plus de flexibilité
       scales: {
         x: {
           stacked: true,
