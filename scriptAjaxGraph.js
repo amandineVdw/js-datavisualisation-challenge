@@ -1,90 +1,73 @@
-// Créer le container pour le graphique
+// Créer le container pour les graphiques
 const crimeStatContainer = document.createElement("div");
-
-// Créer le canvas pour le graphique Chart.js
-const crimeStatCanvas = document.createElement("canvas");
-crimeStatCanvas.id = "crimeStatChart";
-crimeStatCanvas.style.width = "100%";
-crimeStatCanvas.style.maxWidth = "80rem";
+crimeStatContainer.style.display = "flex";
+crimeStatContainer.style.flexWrap = "wrap";
+crimeStatContainer.style.gap = "20px";
 
 // Créer le div pour le graphique CanvasJS
 const canvasJSContainer = document.createElement("div");
 canvasJSContainer.id = "canvasJSContainer";
 canvasJSContainer.style.width = "100%";
 canvasJSContainer.style.maxWidth = "80rem";
-
-// Ajouter les éléments dans le container
-crimeStatContainer.appendChild(crimeStatCanvas);
+canvasJSContainer.style.height = "40rem";
 crimeStatContainer.appendChild(canvasJSContainer);
 
-// Insérer la div/chart au bon endroit dans l'article (en dessous de Homicides=id)
-const crimeStatElement = document.getElementById("content");
+// Insérer le container dans l'article (en dessous de l'élément avec id 'firstHeading')
+const crimeStatElement = document.getElementById("firstHeading");
 if (crimeStatElement) {
-  const titleElement = document.getElementById("firstHeading");
-  titleElement.insertAdjacentElement("afterend", crimeStatContainer);
+  crimeStatElement.insertAdjacentElement("afterend", crimeStatContainer);
 } else {
-  console.error("Element with id 'content' not found.");
+  console.error("Element with id 'firstHeading' not found.");
 }
 
+// CanvasJS Setup
+window.onload = function () {
+  var dataPoints = [];
+  var chart;
 
-
-window.onload = function() {
-    // Sélectionner le contexte du canvas
-    const ctx = document.getElementById('crimeStatChart').getContext('2d');
-
-    // Initialiser les données et la configuration du graphique
-    const initialData = {
-        labels: [], // Étiquettes de temps
-        datasets: [{
-            label: 'Crime Data',
-            data: [],
-            borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderWidth: 1,
-            fill: false // S'assurer que la zone sous la ligne n'est pas remplie
-        }]
-    };
-
-    const chartOptions = {
-        scales: {
-            x: {
-                type: 'time',
-                time: {
-                    unit: 'second'
-                }
-            },
-            y: {
-                beginAtZero: true
-            }
-        }
-    };
-
-    const crimeStatChart = new Chart(ctx, {
-        type: 'line',
-        data: initialData,
-        options: chartOptions
-    });
-
-    // Fonction pour récupérer les nouvelles données et mettre à jour le graphique
-    function fetchDataAndUpdateChart() {
-        $.getJSON("https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json", function(data) {
-            const newLabels = [];
-            const newData = [];
-
-            data.forEach(point => {
-                newLabels.push(new Date(point[0] * 1000)); // Convertir l'horodatage en objet Date
-                newData.push(point[1]);
-            });
-
-            crimeStatChart.data.labels = newLabels;
-            crimeStatChart.data.datasets[0].data = newData;
-            crimeStatChart.update();
-        });
+  // Initial data fetch
+  $.getJSON(
+    "https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json",
+    function (data) {
+      $.each(data, function (key, value) {
+        dataPoints.push({ x: value[0], y: parseInt(value[1]) });
+      });
+      chart = new CanvasJS.Chart("canvasJSContainer", {
+        title: {
+          text: "Live Chart - Crime in Europe Union - from January 2014",
+        },
+        data: [
+          {
+            type: "line",
+            dataPoints: dataPoints,
+          },
+        ],
+      });
+      chart.render();
+      updateChart();
     }
+  );
 
-    // Récupération initiale
-    fetchDataAndUpdateChart();
-
-    // Définir l'intervalle pour récupérer les nouvelles données toutes les secondes
-    setInterval(fetchDataAndUpdateChart, 1000);
+  // Function to update chart data
+  function updateChart() {
+    $.getJSON(
+      "https://canvasjs.com/services/data/datapoints.php?xstart=" +
+        (dataPoints.length + 1) +
+        "&ystart=" +
+        dataPoints[dataPoints.length - 1].y +
+        "&length=1&type=json",
+      function (data) {
+        $.each(data, function (key, value) {
+          dataPoints.push({
+            x: parseInt(value[0]),
+            y: parseInt(value[1]),
+          });
+        });
+        chart.render();
+        setTimeout(function () {
+          updateChart();
+        }, 1000); // Update every 1 second
+      }
+    );
+  }
 };
