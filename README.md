@@ -5,11 +5,14 @@ Ce projet consiste à enrichir un article existant sur un site web en intégrant
 <br>
 
 1. **Données dynamiques**
-   ![liveChart.gif - dynamic crime chart stat.](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test/readmeGif.gif)
+   ![Live chart.gif - Dynamic graph, crime statistics](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test/readmeGif.gif)
 
 <br>
 
 2.  **Données statiques**
+    ![Static graph pic1 - Police-recorded crime statistics](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test/readmePic1.png)
+
+![Static chart pic2  -  Police-recorded  Homicide statistics](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test/readmePic2.png)
 
 ## Objectifs
 
