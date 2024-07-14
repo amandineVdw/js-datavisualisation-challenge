@@ -24,15 +24,15 @@ L'objectif principal est de manipuler des données (tableaux) et de les intégre
 
 1. **Graphique dynamique et interactif** : Visualisation se mettant à jour en temps réel chaque seconde, ajoutant de nouvelles données tout en conservant les données initiales. Comprend des tooltips affichant des informations supplémentaires au survol de la souris.
    <br>  
-   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif1.gif)
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/main/readmeGif1.gif)
 
 2. **Graphique statique et interactif** : Visualisation figée permettant le filtrage des données via un menu déroulant pour sélectionner l'année. Le graphique se met à jour avec les données correspondantes et inclut des tooltips.
    <br>  
-   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif2.gif)
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/main/readmeGif2.gif)
 
 3. **Graphique statique et dynamique** : Visualisation figée avec des tooltips affichant des informations supplémentaires au survol de la souris.
    <br>  
-   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif3.gif)
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/main/readmeGif3.gif)
 
 ## Détails Techniques
 
@@ -55,6 +55,28 @@ L'objectif principal est de manipuler des données (tableaux) et de les intégre
 
 Vous pouvez également [visiter la page du projet](https://amandinevdw.github.io/js-datavisualisation-challenge/) hébergée sur GitHub Pages pour voir les visualisations de données en action.
 
+## MIT License
+
+Copyright (c) 2024 amandineVdw
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 ## Ressources Additionnelles
 
 Pour plus d'informations sur l'utilisation de chaque bibliothèque ou de l'API, consultez leurs documentations officielles respectives.
@@ -71,4 +93,4 @@ Ce projet a été réalisé dans le cadre d'un défi personnel visant à amélio
 
 ---
 
-![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif4.gif)
+![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/main/readmeGif4.gif)
