@@ -24,15 +24,15 @@ L'objectif principal est de manipuler des données (tableaux) et de les intégre
 
 1. **Graphique dynamique et interactif** : Visualisation se mettant à jour en temps réel chaque seconde, ajoutant de nouvelles données tout en conservant les données initiales. Comprend des tooltips affichant des informations supplémentaires au survol de la souris.
    <br>  
-   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif.gif)
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif1.gif)
 
 2. **Graphique statique et interactif** : Visualisation figée permettant le filtrage des données via un menu déroulant pour sélectionner l'année. Le graphique se met à jour avec les données correspondantes et inclut des tooltips.
    <br>  
-   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmePic1.png)
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif2.gif)
 
 3. **Graphique statique et dynamique** : Visualisation figée avec des tooltips affichant des informations supplémentaires au survol de la souris.
    <br>  
-   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmePic2.png)
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif3.gif)
 
 ## Détails Techniques
 
@@ -71,4 +71,4 @@ Ce projet a été réalisé dans le cadre d'un défi personnel visant à amélio
 
 ---
 
-![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif.gif2)
+![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif4.gif)
