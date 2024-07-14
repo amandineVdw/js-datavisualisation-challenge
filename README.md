@@ -10,9 +10,11 @@ Ce projet consiste à enrichir un article existant sur un site web en intégrant
 <br>
 
 2.  **Données statiques**
+
     - graph.1
       ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmePic1.png)
-    - graph.1
+      <br>
+    - graph.2
       ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmePic2.png)
 
 ## Objectifs
