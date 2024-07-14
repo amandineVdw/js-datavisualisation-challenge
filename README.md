@@ -1,6 +1,6 @@
 # Projet de Visualisation de Données en JavaScript
 
-![](https://github.com/baba-s/techbook-unity-2d-action-game/raw/master/game.gif)
+![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test/readmePic/lifeChart.gif)
 
 Ce projet consiste à enrichir un article existant sur un site web en intégrant deux types de visualisations interactives de données à l'aide de JavaScript.
 
@@ -14,6 +14,7 @@ L'objectif principal de ce projet est d'améliorer l'expérience utilisateur en 
 ## Fonctionnalités
 
 1. **Visualisations de Données Intégrées :**
+
    - Utilisation de JavaScript pour manipuler le DOM et insérer des graphiques interactifs basés sur les données des tables existantes dans l'article.
 
 2. **Visualisation de Données Distante en Temps Réel :**
