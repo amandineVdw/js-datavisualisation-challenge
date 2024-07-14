@@ -1,5 +1,7 @@
 # Projet de Visualisation de Données en JavaScript
 
+![](https://github.com/baba-s/techbook-unity-2d-action-game/raw/master/game.gif)
+
 Ce projet consiste à enrichir un article existant sur un site web en intégrant deux types de visualisations interactives de données à l'aide de JavaScript.
 
 ## Objectifs
