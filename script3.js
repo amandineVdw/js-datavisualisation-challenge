@@ -21,6 +21,29 @@ function addGoogleFont(href) {
 addPreloadFont("/webfontname", "font/format");
 addGoogleFont("googlewebfonturl&display=swap");
 
+// LIVE CHART - H1
+// Créer le container pour les graphiques - LIVE CHART- H1
+const crimeStatContainer = document.createElement("div");
+crimeStatContainer.style.display = "flex";
+crimeStatContainer.style.flexWrap = "wrap";
+crimeStatContainer.style.gap = "20px";
+
+// Créer le div pour le graphique CanvasJS - LIVE CHART- H1
+const canvasJSContainer = document.createElement("div");
+canvasJSContainer.id = "canvasJSContainer";
+canvasJSContainer.style.width = "100%";
+canvasJSContainer.style.maxWidth = "80rem";
+canvasJSContainer.style.height = "40rem";
+crimeStatContainer.appendChild(canvasJSContainer);
+
+// Insérer le container dans l'article (en dessous de l'élément avec id 'firstHeading')- LIVE CHART- H1
+const crimeStatElement = document.getElementById("firstHeading");
+if (crimeStatElement) {
+  crimeStatElement.insertAdjacentElement("afterend", crimeStatContainer);
+} else {
+  console.error("Element with id 'firstHeading' not found.");
+}
+
 // CanvasJS Setup - LIVE CHART- H1
 window.onload = function () {
   var dataPoints = [];
