@@ -1,8 +1,15 @@
 # Projet de Visualisation de Données en JavaScript
 
-![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test/readmePic/lifeChart.gif)
-
 Ce projet consiste à enrichir un article existant sur un site web en intégrant deux types de visualisations interactives de données à l'aide de JavaScript.
+
+<br>
+
+1. **Données dynamiques**
+   ![liveChart.gif - dynamic crime chart stat.](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test/readmeGif.gif)
+
+<br>
+
+2.  **Données statiques**
 
 ## Objectifs
 
