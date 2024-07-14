@@ -1,3 +1,26 @@
+// Fonction pour ajouter une balise <link> pour précharger une police
+function addPreloadFont(href, type) {
+  var link = document.createElement("link");
+  link.rel = "preload";
+  link.href = href;
+  link.as = "font";
+  link.type = type;
+  link.crossOrigin = "anonymous"; // Ajoute l'attribut crossorigin si nécessaire
+  document.head.appendChild(link);
+}
+
+// Fonction pour ajouter une balise <link> pour inclure une police Google
+function addGoogleFont(href) {
+  var link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = href;
+  document.head.appendChild(link);
+}
+
+// Utilisation des fonctions pour ajouter les polices
+addPreloadFont("/webfontname", "font/format");
+addGoogleFont("googlewebfonturl&display=swap");
+
 // TABLE1
 // Créer le container pour le graphique - TABLE1
 const offencePoliceContainer = document.createElement("div");
