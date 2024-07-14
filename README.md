@@ -1,60 +1,74 @@
 # Projet de Visualisation de Données en JavaScript
 
-Ce projet consiste à enrichir un article existant sur un site web en intégrant deux types de visualisations interactives de données à l'aide de JavaScript.
-
-<br>
-
-1. **Données dynamiques**
-   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif.gif)
-
-<br>
-
-2.  **Données statiques**
-
-    - graph.1
-      ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmePic1.png)
-      <br>
-    - graph.2
-      ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmePic2.png)
+Ce projet vise à enrichir un article existant sur un site web en intégrant trois types de visualisations de données à l'aide de JavaScript, en utilisant plusieurs bibliothèques et une API externe.
 
 ## Objectifs
 
-L'objectif principal de ce projet est d'améliorer l'expérience utilisateur en rendant les données plus visuelles et interactives. Pour cela, nous allons :
+L'objectif principal de ce projet est d'améliorer l'expérience utilisateur en rendant les données plus visuelles et interactives grâce à l'intégration des bibliothèques et de l'API suivantes :
 
-- Ajouter des graphiques interactifs au-dessus de chaque table de données existante dans l'article.
-- Récupérer des données en temps réel à partir d'une source distante via AJAX et afficher un graphique dynamique qui se met à jour automatiquement.
+- **Bibliothèques :**
 
-## Fonctionnalités
+  - Chart.js pour créer des graphiques dynamiques et statiques interactifs.
+  - CanvasJS pour la création de graphiques dynamiques avancés.
+  - jQuery pour simplifier la manipulation du DOM et les requêtes AJAX.
 
-1. **Visualisations de Données Intégrées :**
+- **API :**
+  - Utilisation d'une API externe pour récupérer des données en temps réel via AJAX.
 
-   - Utilisation de JavaScript pour manipuler le DOM et insérer des graphiques interactifs basés sur les données des tables existantes dans l'article.
+En plus d'ajouter un graphique interactif au-dessus du tableau de données existant dans l'article, nous allons également récupérer des données en temps réel à partir d'une source distante. Cela se fait en utilisant des requêtes AJAX avec fetch() pour obtenir les données, qui sont au format JSON. Ces données sont ensuite utilisées pour afficher un graphique dynamique qui se met à jour automatiquement.
 
-2. **Visualisation de Données Distante en Temps Réel :**
-   - Utilisation d'une requête AJAX pour récupérer périodiquement des données à partir d'une URL distante.
-   - Intégration d'un graphique dynamique qui se met à jour toutes les secondes avec les données reçues.
+<br>
+L'objectif principal est de manipuler des données (tableaux) et de les intégrer dans des graphiques selon les trois types suivants :
 
-## Bibliothèque Utilisée
+## Types de Graphiques Intégrés
 
-Pour simplifier le développement des graphiques interactifs, nous avons choisi d'utiliser **chart.js**, une bibliothèque JavaScript populaire et bien documentée.
+1. **Graphique dynamique et interactif** : Visualisation se mettant à jour en temps réel chaque seconde, ajoutant de nouvelles données tout en conservant les données initiales. Comprend des tooltips affichant des informations supplémentaires au survol de la souris.
+   <br>  
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif.gif)
+
+2. **Graphique statique et interactif** : Visualisation figée permettant le filtrage des données via un menu déroulant pour sélectionner l'année. Le graphique se met à jour avec les données correspondantes et inclut des tooltips.
+   <br>  
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmePic1.png)
+
+3. **Graphique statique et dynamique** : Visualisation figée avec des tooltips affichant des informations supplémentaires au survol de la souris.
+   <br>  
+   ![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmePic2.png)
 
 ## Détails Techniques
 
-- **Manipulation du DOM :** Utilisation de sélecteurs pour cibler les emplacements appropriés où insérer les graphiques.
-- **Requêtes AJAX :** Utilisation de la fonction FETCH pour récupérer des données JSON depuis l'URL spécifiée.
-- **Intégration de chart.js :** Utilisation des options et méthodes de chart.js pour créer et personnaliser les graphiques selon les besoins du projet.
-- **Gestion de la Séparation des Préoccupations :** Assurer que le contenu est accessible et informatif même lorsque JavaScript est désactivé.
+- **Manipulation du DOM** : Utilisation de sélecteurs pour cibler les emplacements appropriés où insérer les graphiques.
+- **Requêtes AJAX** : Utilisation de la fonction FETCH et de jQuery pour récupérer des données JSON depuis l'API externe.
+- **Intégration des bibliothèques** : Utilisation des options et méthodes fournies par chaque bibliothèque pour créer et personnaliser les graphiques selon les besoins du projet.
+- **Utilisation de JSON** : Utilisation de JSON pour le transfert de données structurées entre le serveur et le client.
 
 ## Comment Utiliser
 
-1. Clonez ce repository sur votre machine locale.
+1. Clonez ce repository sur votre machine locale :
+   ```bash
+   git clone https://github.com/amandineVdw/js-datavisualisation-challenge.git
+   ```
 2. Ouvrez le fichier `index.html` dans votre navigateur.
-3. Explorez les graphiques interactifs ajoutés aux tables de données et observez le graphique en temps réel sous le titre principal de l'article.
+3. Explorez le graphique interactif ajouté au tableau de données:
+   - Observez le graphique en temps réel sous le titre principal de l'article.
+
+---
+
+Vous pouvez également [visiter la page du projet](https://amandinevdw.github.io/js-datavisualisation-challenge/) hébergée sur GitHub Pages pour voir les visualisations de données en action.
 
 ## Ressources Additionnelles
 
-Pour plus d'informations sur l'utilisation de chart.js, consultez la [documentation officielle de chart.js](https://www.chartjs.org/docs/latest/).
+Pour plus d'informations sur l'utilisation de chaque bibliothèque ou de l'API, consultez leurs documentations officielles respectives.
+
+- [Chart.js](https://www.chartjs.org/docs/latest/)
+- [Canvas.js](https://canvasjs.com/docs/charts/basics-of-creating-html5-chart/)
+- [jQuery API](https://api.jquery.com/)
+- [Ajax ｜ jQuery API](https://api.jquery.com/category/ajax/)
+- [JSON](https://www.jsondoc.org/)
 
 ---
 
 Ce projet a été réalisé dans le cadre d'un défi personnel visant à améliorer mes compétences en JavaScript, en particulier dans le domaine de la visualisation de données interactives. J'ai apprécié travailler sur ce projet et je suis ouvert à toute suggestion ou commentaire pour l'améliorer davantage.
+
+---
+
+![](https://github.com/amandineVdw/js-datavisualisation-challenge/raw/test1/readmeGif.gif2)
